@@ -1,4 +1,4 @@
-// File: frontend/components/ui/badge.tsx
+// File: frontend/app/components/ui/badge.tsx
 import * as React from "react";
 
 interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {

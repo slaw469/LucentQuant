@@ -1,4 +1,4 @@
-// File: frontend/components/header.tsx
+// File: frontend/app/components/header.tsx
 "use client";
 
 import * as React from "react";
