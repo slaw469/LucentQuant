@@ -110,47 +110,34 @@ function StatusIcon({ icon }: { icon: "check" | "sync" | "error" }) {
 
 export default function DashboardPage() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col">
+    <div className="relative flex min-h-screen w-full flex-col bg-black">
       <Header />
 
-      <main className="flex-1 p-4 sm:p-6 md:p-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <main className="flex-1 p-6">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
             {/* PnL Chart - Large card */}
-            <Card className="flex flex-col gap-4 p-4 sm:p-6 lg:col-span-2">
-              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-base font-medium leading-normal text-text-primary">Total PnL</p>
-                  <p className="truncate text-3xl font-bold leading-tight tracking-light text-text-primary">
-                    +$1,234.56
-                  </p>
-                  <div className="flex gap-2">
-                    <p className="text-sm font-normal leading-normal text-text-muted">1M</p>
-                    <p className="text-sm font-medium leading-normal text-gain">+5.8%</p>
+            <Card className="flex flex-col gap-6 p-6 lg:col-span-8">
+              <div className="flex items-start justify-between">
+                <div className="flex flex-col gap-1">
+                  <p className="text-xs font-medium uppercase tracking-wider text-text-muted">Total PnL</p>
+                  <p className="text-4xl font-bold text-text-primary">+$1,234.56</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-xs text-text-muted">1M</p>
+                    <p className="text-xs font-semibold text-gain">+5.8%</p>
                   </div>
                 </div>
 
-                <div className="w-full sm:w-auto">
-                  <div className="flex h-10 w-full flex-1 items-center justify-center rounded-lg bg-black/20 p-1 sm:w-52">
-                    <label className="flex h-full grow cursor-pointer items-center justify-center overflow-hidden rounded-md px-2 text-sm font-medium leading-normal text-text-muted has-[:checked]:bg-secondary/20 has-[:checked]:text-text-primary">
-                      <span className="truncate">1D</span>
-                      <input className="sr-only" name="pnl-range" type="radio" value="1D" />
-                    </label>
-                    <label className="flex h-full grow cursor-pointer items-center justify-center overflow-hidden rounded-md px-2 text-sm font-medium leading-normal text-text-muted has-[:checked]:bg-secondary/20 has-[:checked]:text-text-primary">
-                      <span className="truncate">1W</span>
-                      <input className="sr-only" name="pnl-range" type="radio" value="1W" />
-                    </label>
-                    <label className="flex h-full grow cursor-pointer items-center justify-center overflow-hidden rounded-md px-2 text-sm font-medium leading-normal text-text-muted has-[:checked]:bg-secondary/20 has-[:checked]:text-text-primary">
-                      <span className="truncate">1M</span>
-                      <input
-                        defaultChecked
-                        className="sr-only"
-                        name="pnl-range"
-                        type="radio"
-                        value="1M"
-                      />
-                    </label>
-                  </div>
+                <div className="flex gap-2">
+                  <button className="px-4 py-2 text-sm font-medium text-text-muted transition-colors hover:text-text-primary">
+                    1D
+                  </button>
+                  <button className="px-4 py-2 text-sm font-medium text-text-muted transition-colors hover:text-text-primary">
+                    1W
+                  </button>
+                  <button className="rounded bg-secondary/20 px-4 py-2 text-sm font-medium text-text-primary">
+                    1M
+                  </button>
                 </div>
               </div>
 
@@ -199,46 +186,54 @@ export default function DashboardPage() {
             </Card>
 
             {/* Metrics Cards */}
-            <div className="flex flex-col gap-6">
-              <Card className="flex flex-col gap-2 p-6">
-                <p className="text-base font-medium leading-normal text-text-muted">Rolling Sharpe Ratio</p>
-                <p className="text-3xl font-bold leading-tight tracking-light text-text-primary">1.87</p>
+            <div className="flex flex-col gap-4 lg:col-span-4">
+              <Card className="flex flex-col gap-3 p-6">
+                <p className="text-xs font-medium uppercase tracking-wider text-text-muted">Rolling Sharpe Ratio</p>
+                <p className="text-5xl font-bold text-text-primary">1.87</p>
               </Card>
 
-              <Card className="flex flex-col gap-2 p-6">
-                <p className="text-base font-medium leading-normal text-text-muted">Win Rate</p>
-                <p className="text-3xl font-bold leading-tight tracking-light text-text-primary">62.5%</p>
+              <Card className="flex flex-col gap-3 p-6">
+                <p className="text-xs font-medium uppercase tracking-wider text-text-muted">Win Rate</p>
+                <p className="text-5xl font-bold text-text-primary">62.5%</p>
               </Card>
             </div>
 
             {/* Active Signals Table */}
-            <Card className="flex flex-col gap-4 p-4 sm:p-6 lg:col-span-3">
-              <CardTitle>Active Signals</CardTitle>
+            <Card className="flex flex-col gap-6 p-6 lg:col-span-12">
+              <h3 className="text-lg font-bold text-text-primary">Active Signals</h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="border-b border-divider">
-                      <th className="py-3 pr-3 text-sm font-semibold text-text-muted">Exchange</th>
-                      <th className="py-3 px-3 text-sm font-semibold text-text-muted">Probability</th>
-                      <th className="py-3 px-3 text-sm font-semibold text-text-muted">Edge</th>
-                      <th className="py-3 pl-3 text-sm font-semibold text-text-muted">Confidence</th>
+                    <tr className="border-b border-divider/60">
+                      <th className="pb-4 pr-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                        Exchange
+                      </th>
+                      <th className="pb-4 px-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                        Probability
+                      </th>
+                      <th className="pb-4 px-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                        Edge
+                      </th>
+                      <th className="pb-4 pl-4 text-xs font-semibold uppercase tracking-wider text-text-muted">
+                        Confidence
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     {demoSignals.map((signal, index) => (
-                      <tr key={index} className="border-b border-divider last:border-0">
-                        <td className="py-3 pr-3 text-sm font-medium text-text-primary">
+                      <tr key={index} className="border-b border-divider/40 last:border-0">
+                        <td className="py-4 pr-4 text-sm font-medium text-text-primary">
                           {signal.exchange}
                         </td>
-                        <td className="py-3 px-3 text-sm font-medium text-text-primary">
+                        <td className="py-4 px-4 text-sm font-medium text-text-primary">
                           {signal.probability}
                         </td>
-                        <td className="py-3 px-3 text-sm font-medium">
+                        <td className="py-4 px-4 text-sm font-semibold">
                           <span className={signal.edgeValue > 0 ? "text-primary" : "text-danger"}>
                             {signal.edge}
                           </span>
                         </td>
-                        <td className="py-3 pl-3 text-sm font-medium text-text-primary">
+                        <td className="py-4 pl-4 text-sm font-medium text-text-primary">
                           {signal.confidence}
                         </td>
                       </tr>
@@ -249,26 +244,23 @@ export default function DashboardPage() {
             </Card>
 
             {/* Topic Sentiment and System Status */}
-            <div className="flex flex-col gap-6 lg:col-span-3 lg:flex-row">
+            <div className="grid grid-cols-1 gap-4 lg:col-span-12 lg:grid-cols-2">
               {/* Topic Sentiment */}
-              <Card className="flex flex-1 flex-col gap-4 p-4 sm:p-6">
-                <CardTitle>Topic Sentiment</CardTitle>
-                <div className="grid grid-cols-2 gap-4">
+              <Card className="flex flex-col gap-6 p-6">
+                <h3 className="text-lg font-bold text-text-primary">Topic Sentiment</h3>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-6">
                   {topicSentiments.map((topic, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between rounded-lg bg-black/20 p-3"
-                    >
-                      <p className="text-sm text-text-primary/80">{topic.topic}</p>
+                    <div key={index} className="flex items-center justify-between gap-4">
+                      <p className="text-sm text-text-primary/90">{topic.topic}</p>
                       <div
-                        className={`h-6 w-10 rounded ${
+                        className={`h-6 w-12 rounded ${
                           topic.intensity > 0.7
-                            ? "bg-danger/80"
+                            ? "bg-danger"
                             : topic.intensity > 0.5
-                            ? "bg-danger/50"
+                            ? "bg-danger/60"
                             : topic.intensity > 0.3
-                            ? "bg-gain/30"
-                            : "bg-gain/80"
+                            ? "bg-gain/40"
+                            : "bg-gain"
                         }`}
                         aria-label={`Sentiment intensity: ${topic.intensity}`}
                       />
@@ -278,16 +270,28 @@ export default function DashboardPage() {
               </Card>
 
               {/* System Status */}
-              <Card className="flex flex-1 flex-col gap-4 p-4 sm:p-6">
-                <CardTitle>System Status</CardTitle>
-                <div className="flex flex-col gap-3">
+              <Card className="flex flex-col gap-6 p-6">
+                <h3 className="text-lg font-bold text-text-primary">System Status</h3>
+                <div className="flex flex-col gap-4">
                   {systemStatus.map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <Badge variant={item.variant} className="flex h-6 w-6 items-center justify-center rounded-full p-0">
-                        <StatusIcon icon={item.icon} />
-                      </Badge>
+                      <div className={`flex h-6 w-6 items-center justify-center rounded-full ${
+                        item.variant === "success" ? "bg-gain/20" :
+                        item.variant === "warning" ? "bg-pending/20" :
+                        item.variant === "danger" ? "bg-danger/20" :
+                        "bg-text-muted/20"
+                      }`}>
+                        <div className={`${
+                          item.variant === "success" ? "text-gain" :
+                          item.variant === "warning" ? "text-pending" :
+                          item.variant === "danger" ? "text-danger" :
+                          "text-text-muted"
+                        }`}>
+                          <StatusIcon icon={item.icon} />
+                        </div>
+                      </div>
                       <p className="flex-1 text-sm text-text-primary/80">{item.label}</p>
-                      <p className={`text-sm font-medium ${
+                      <p className={`text-sm font-semibold ${
                         item.variant === "success" ? "text-gain" :
                         item.variant === "warning" ? "text-pending" :
                         item.variant === "danger" ? "text-danger" :
