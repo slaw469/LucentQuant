@@ -18,6 +18,10 @@ module.exports = {
         "text-primary": "#E8EDF2",
         "text-muted": "#8B93A7",
         "divider": "#1C2333",
+        "bias-right": "#FF5C93",
+        "bias-left": "#00C2FF",
+        "bias-center": "#8B93A7",
+        "bias-niche": "#A855F7",
       },
       fontFamily: {
         "display": ["Space Grotesk", "sans-serif"]
@@ -32,6 +36,8 @@ module.exports = {
         'glow-primary': '0 0 15px 0 rgba(0, 245, 160, 0.3)',
         'glow-green': '0 0 15px -3px rgba(20, 255, 185, 0.3)',
         'glow-red': '0 0 15px -3px rgba(255, 92, 147, 0.3)',
+        'glow-secondary': '0 0 15px 0 rgba(0, 194, 255, 0.3)',
+        'glow-danger': '0 0 15px 0 rgba(255, 92, 147, 0.3)',
       },
     },
   },
