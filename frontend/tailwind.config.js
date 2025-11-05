@@ -29,6 +29,7 @@ module.exports = {
         "full": "9999px"
       },
       boxShadow: {
+        'glow-primary': '0 0 15px 0 rgba(0, 245, 160, 0.3)',
         'glow-green': '0 0 15px -3px rgba(20, 255, 185, 0.3)',
         'glow-red': '0 0 15px -3px rgba(255, 92, 147, 0.3)',
       },

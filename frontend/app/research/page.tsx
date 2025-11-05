@@ -1,49 +1,89 @@
 // File: frontend/app/research/page.tsx
-import * as React from "react";
+"use client";
+import React, { useState } from "react";
 import type { Metadata } from "next";
+import { ChatInput } from "../components/chat/ChatInput";
+import { ChatMessage, Message } from "../components/chat/ChatMessage";
+import { ChatPanel } from "../components/chat/ChatPanel";
 
-export const metadata: Metadata = {
-  title: "Research - QuantVision",
-  description: "Access quantitative research and market analysis",
-};
+const initialMessages: Message[] = [
+  {
+    author: "user",
+    content: "Summarize the market sentiment on the latest CPI report and suggest potential trades.",
+  },
+  {
+    author: "ai",
+    content: (
+      <div className="space-y-2">
+        <p>
+          The latest CPI report showed a slight cooling in inflation, which has
+          been interpreted positively by the market. Sentiment analysis of news
+          articles and social media indicates a bullish short-term outlook,
+          particularly for tech stocks.
+        </p>
+        <p>Potential trades:</p>
+        <ul className="list-inside list-disc space-y-1 pl-2">
+          <li>
+            <strong>Long NASDAQ 100 (QQQ):</strong> Capitalize on the positive
+            tech sentiment.
+          </li>
+          <li>
+            <strong>Short Volatility (VIX):</strong> As market fears subside,
+            volatility is expected to decrease.
+          </li>
+        </ul>
+      </div>
+    ),
+  },
+];
 
 export default function ResearchPage() {
-  return (
-    <main className="flex-1 p-4 sm:p-6 md:p-8">
-        <div className="mx-auto max-w-7xl">
-          <header className="mb-8">
-            <h1 className="text-3xl font-bold tracking-tight text-text-primary">Research</h1>
-            <p className="mt-2 text-text-muted">
-              Access quantitative research and market analysis
-            </p>
-          </header>
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
 
-          <div className="rounded-xl border border-divider bg-panel p-12 text-center">
-            <div className="mx-auto max-w-md">
-              <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
-                <svg
-                  className="h-8 w-8 text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-xl font-semibold text-text-primary">Research page coming soon</h2>
-              <p className="mt-2 text-sm text-text-muted">
-                This page is currently under development. Check back soon for research and analysis tools.
-              </p>
-            </div>
-          </div>
+  const handleNewChat = () => {
+    setMessages([]);
+  };
+
+  const handleSendMessage = (text: string) => {
+    const userMessage: Message = { author: "user", content: text };
+    setMessages((prev) => [...prev, userMessage]);
+
+    // Mock AI Response
+    setTimeout(() => {
+      const aiResponse: Message = {
+        author: "ai",
+        content: "This is a mocked AI response.",
+      };
+      setMessages((prev) => [...prev, aiResponse]);
+    }, 500);
+  };
+
+  return (
+    <main className="flex flex-1 flex-col overflow-hidden">
+      <div className="mx-auto flex h-full w-full max-w-4xl flex-1 flex-col p-4 sm:p-6 md:p-8">
+        <div className="mb-6 flex items-center justify-between">
+          <h1 className="text-2xl font-bold text-text-primary">
+            AI Research Assistant
+          </h1>
+          <button
+            onClick={handleNewChat}
+            className="flex items-center gap-2 rounded-lg border border-divider bg-panel px-4 py-2 text-sm text-text-primary hover:bg-divider"
+          >
+            <span className="material-symbols-outlined text-base">add</span>
+            New Chat
+          </button>
         </div>
-      </main>
+        <div className="flex-1 space-y-6 overflow-y-auto pr-2">
+          {messages.length === 0 ? (
+            <ChatPanel />
+          ) : (
+            messages.map((msg, i) => <ChatMessage key={i} message={msg} />)
+          )}
+        </div>
+        <div className="mt-auto">
+          <ChatInput onSendMessage={handleSendMessage} />
+        </div>
+      </div>
+    </main>
   );
 }
-
