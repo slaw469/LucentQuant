@@ -34,6 +34,8 @@ module.exports = {
       },
       boxShadow: {
         'glow-primary': '0 0 15px 0 rgba(0, 245, 160, 0.3)',
+        'glow-green': '0 0 15px -3px rgba(20, 255, 185, 0.3)',
+        'glow-red': '0 0 15px -3px rgba(255, 92, 147, 0.3)',
         'glow-secondary': '0 0 15px 0 rgba(0, 194, 255, 0.3)',
         'glow-danger': '0 0 15px 0 rgba(255, 92, 147, 0.3)',
       },
