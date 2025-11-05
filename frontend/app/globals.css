@@ -32,3 +32,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.slider-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #00F5A0;
+  border: 2px solid #0B0F19;
+  border-radius: 9999px;
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+.slider-thumb::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #00F5A0;
+  border: 2px solid #0B0F19;
+  border-radius: 9999px;
+  cursor: pointer;
+}

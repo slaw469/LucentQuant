@@ -28,7 +28,13 @@ module.exports = {
         "xl": "0.75rem",
         "full": "9999px"
       },
+      boxShadow: {
+        'glow-green': '0 0 15px -3px rgba(20, 255, 185, 0.3)',
+        'glow-red': '0 0 15px -3px rgba(255, 92, 147, 0.3)',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
