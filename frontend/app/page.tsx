@@ -110,7 +110,7 @@ function StatusIcon({ icon }: { icon: "check" | "sync" | "error" }) {
 
 export default function DashboardPage() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col bg-black">
+    <div className="relative flex min-h-screen w-full flex-col bg-background-dark">
       <Header />
 
       <main className="flex-1 p-6">

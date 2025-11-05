@@ -23,7 +23,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-solid border-divider bg-black/80 px-4 py-3 backdrop-blur-sm sm:px-6 md:px-10">
+    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-solid border-divider bg-background-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 md:px-10">
       <div className="flex items-center gap-4 text-text-primary">
         <div className="size-6 text-primary">
           <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -81,7 +81,7 @@ export function Header() {
 
       {isMobileMenuOpen && (
         <nav
-          className="absolute left-0 right-0 top-full border-b border-divider bg-black md:hidden"
+          className="absolute left-0 right-0 top-full border-b border-divider bg-background-dark md:hidden"
           role="navigation"
           aria-label="Mobile navigation"
         >
