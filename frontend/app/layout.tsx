@@ -3,14 +3,14 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+  variable: "--font-display",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "QuantVision - AI-Driven Prediction Market Trading",
+  title: "QuantVision - Trading Dashboard",
   description: "Professional quantitative trading system for event-based prediction markets",
 };
 
@@ -21,7 +21,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${spaceGrotesk.variable} antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+          rel="stylesheet"
+        />
+      </head>
+      <body
+        className={`${spaceGrotesk.variable} font-display bg-background-dark text-text-primary antialiased`}
+      >
         {children}
       </body>
     </html>
